@@ -1,0 +1,53 @@
+#include<bits/stdc++.h>
+int a[65][65];
+using namespace std;
+void transpose(int p)
+{  int temp;
+    for(int i=1;i<=p;i++)
+    {
+        for(int j=i;j<=p;j++)
+        {   temp=a[j][i];
+            a[j][i]=a[i][j];
+            a[i][j]=temp;
+        }
+    }
+    // for(int i=1;i<=p;i++)
+    // {
+    //     for(int j=1;j<=p;j++)
+    //     {
+    //         cout<<a[i][j]<<" ";
+    //     }
+    //     cout<<endl;
+    // }
+}
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {  int ct=0;
+        int n;cin>>n;
+        for(int i=1;i<=n;i++)
+        {
+            for(int j=1;j<=n;j++)
+            cin>>a[i][j];
+        }
+        for(int i=n;i>=1;i--)
+        {  int sum=0;
+            for(int j=n;j>=1;j--)
+            { 
+               sum+=a[i][j];
+            }
+            // cout<<sum<<endl;
+            if(!(sum==pow(n,2)*(i-1)+(n*(n+1))/2))
+                 {
+                     transpose(i);
+                     ct++;
+                 }
+        }
+        cout<<ct<<endl;
+       
+        
+    }
+
+}
